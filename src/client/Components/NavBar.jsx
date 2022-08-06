@@ -5,14 +5,19 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTheme } from '../state/features/themeSlice';
 
 export default function ButtonAppBar() {
   const pages = ['home', 'projects', 'blogs', 'contact'];
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const theme = useSelector(state => state.theme.value);
 
-  const handleClick = (p, n) => n === 0 ? navigate('/') : navigate(`/${p}`);
+  const handleClick = (endpoint, index) => index === 0 ? navigate('/') : navigate(`/${endpoint}`);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -25,7 +30,6 @@ export default function ButtonAppBar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            {/* <MenuIcon /> */}
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {pages.map((page, i) => (
@@ -34,7 +38,9 @@ export default function ButtonAppBar() {
               </Button>
             ))}
           </Typography>
-          {/* <Button color="inherit">Login</Button> */}
+          <Button color="inherit" onClick={() => dispatch(setTheme(theme === 'light' ? 'dark' : 'light'))}>
+            { theme === 'light' ? <DarkModeIcon /> : <LightModeIcon /> }
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>

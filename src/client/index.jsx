@@ -1,17 +1,15 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import { store } from './state/store';
+import { Provider } from 'react-redux';
 import App from './App';
-import NavBar from './Components/NavBar';
-import { BrowserRouter as Router } from 'react-router-dom';
+
 
 const container = document.getElementById('root');
 createRoot(container).render(
   <StrictMode>
-    <Router>
-      <NavBar />
-      <App />
-    </Router>
+    <Provider store={store}>
+      <App />  
+    </Provider>
   </StrictMode>
 );
