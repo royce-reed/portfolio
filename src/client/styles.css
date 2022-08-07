@@ -1,0 +1,14 @@
+.blog-card {
+  /* min-height: 350px;
+  min-width: 300px; */
+  font-size: 1.2rem;
+  line-height: 1.5em;
+  margin: 1rem auto 3rem;
+  list-style: none;
+  background: rgba(246, 248, 250, 1);
+  border-radius: 0.25rem;
+  padding: 1.5rem 3rem;
+  box-shadow: -3px -3px 4px rgba(228, 230, 232, 1),
+    3px 3px 12px 2px rgba(212, 214, 216, 1);
+
+}

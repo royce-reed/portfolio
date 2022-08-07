@@ -2,7 +2,7 @@ import express from 'express';
 import { resolve } from 'path';
 import morgan from 'morgan';
 import helmet from 'helmet';
-// import compression from 'compression';
+import blogs from './routes/blogs.js';
 
 const app = express();
 
@@ -10,7 +10,10 @@ const app = express();
 app.use(express.static(resolve('./dist')));
 app.use(morgan('tiny'));
 app.use(helmet());
-// app.use(compression());
+
+
+//* Routes *//
+app.use('/api/blogs', blogs);
 
 
 //* End of File *//

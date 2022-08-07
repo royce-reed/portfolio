@@ -1,8 +1,6 @@
-import path, { fileURLToPath } from 'url';
 import { resolve } from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-
-
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 export default {
   mode: 'development',
@@ -37,6 +35,14 @@ export default {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(?:ico gif|png|jpg|jpeg)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff(2)?|eot ttf|otf|svg|)$/,
+        type: 'asset/inline',
+      },
     ],
   },
   plugins: [
@@ -44,5 +50,6 @@ export default {
       template: resolve('./Public/index.html'),
       inject: false,
     }),
+    // new BundleAnalyzerPlugin()
   ],
 };
